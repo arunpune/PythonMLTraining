@@ -1,0 +1,100 @@
+# Reservation Management System (RMS) for  Blue Lagoon Resort , Miami, Florida
+
+Requirments Document:
+
+Objective:
+Build Reservation Management System (RMS) for 	a Resort
+To make this a fun learning experience, let us design the  classes, attributes, methods for the Reservation Management System (RMS) of a RESORT that rents villas in Miami, Florida.
+
+Business Workflow:
+The resort rents has 2 categories of Villa - Standard and VIP Villa.
+There are 4 standard villas and 2 VIP villas. 
+
+The Features/Functions of a Standard Villa are:
+Each villa has name, there is a personal assistant. The personal assistant is known by name. 
+Standard villa  offers functions that inform about the hours that the personal assistant will be on call and the dates that the villa will be cleaned and keys will be changed. 
+In addition, it has a function to print the label of the gift that is left in the room of each new guest. 
+
+
+VIP Villas have all the features of a Standard Villa.
+In addition, VIP villas are larger and come with a personal yacht. 
+The Personal Assistant are 
+
+THE VILLA TYPES ARE : 
+#stdvilla
+#vipvilla 
+
+
+Following are Different Types of Entities a Resort business will have
+
+
+1. stdVilla
+attritbutes? 
+	- Name of Villa
+	- Name of Care Taker
+	- Reservation Id		
+methods?
+	1)def setPersonalAssistant()
+Standard villa  offers functions that inform about the hours that the personal 	assistant will be on call and the dates that the villa will be cleaned and keys will 	be changed. 
+	2)In addition, it has a function to print the label of the gift that is left in the 	room of each new guest. 	
+
+
+2. vipVilla(villa)
+attritbutes?
+methods?
+def setPersonalAssistant()
+Standard villa  offers functions that inform about the hours that the personal 	assistant will be on call and the dates that the villa will be cleaned and keys will 	be changed. 
+We will provid a YATCH to the Guest
+
+
+3#guest
+has a primary guest name and members accompanying the primary guest
+attritbutes?
+-First name
+-last name
+-Number of Guests Adults
+-Number of Childrens
+
+methods?
+This class will print the first name and the last name.
+
+
+3#reservation
+has reservation information like checkin and check out date.
+attritbutes?
+- Reservation id
+- Name of the villa that is booked(number)
+- Checkin date
+- Checkout date
+- Number of days of the stay		
+
+methods?
+	Information about the Reservation
+
+
+Object Associations:
+
+4#resort class
+ecapsulates all the information like villas, guest list, reservation list etc.
+attritbutes?
+
+ 	stdVilList=['ElektraStd','PersephoneStd','ArtemisStd','KourosStd']
+      vipVilList=['ZeusVip','AlexandrianVip']
+	Guest List[]
+	reservationList=[]
+
+methods?
+   	def printLists(self):
+        print(f"******print Guest List*****************")
+        print(f" The guest list is: {self.guestList}")
+        print(f"******print Reservation List*****************")
+        print(f" The reservation list is: {self.reservationList}")
+        print(f" The resID list is: {self.resIDList[1:]}")
+        print(f"***********************")
+
+
+
+What you need to do:
+1. Identify the different Entities(Class) ?
+	- Attributes of the Entities?
+	- Methods of the Entinties ?

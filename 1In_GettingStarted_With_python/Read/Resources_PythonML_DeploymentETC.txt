@@ -1,0 +1,45 @@
+*************************
+1)OOPS using Python
+*************************
+
+https://www.youtube.com/watch?v=mMDFXC-Y2Co
+LIVE_OOP_Basics_Python_I
+
+*************************
+2)Basic Bug Fixing using PYthon
+*************************
+https://www.youtube.com/watch?v=nGPMci7uAtc
+
+https://drive.google.com/file/d/1uxCA6N26ogpNa-4Q4m8uZThvrpPBeXj-/view?usp=sharing
+
+LIVE-1_Python_DeBuggingUsingPython
+
+SMALL ERROR: IN cell [19], in the line B[i,j] = A1[i,j] + A 2[i,j] worked without any errors as we have B=A1+A2 in cell [15]. This implies that we created B in the cell[15] and are simply overwriting it in cell[19]. If we did not have the line B=A1+A2 in cell [15], we would encounter and error in cell [19] as Python interpreter doesn't know what B is?
+Anyways, the key lesson is the same: always allocate your variables before you use them in loops.
+
+*************************
+3)Using Web-APIs in Python for ML
+LIVE on 1st March 2020: Using Web-APIs in Python for ML
+*************************
+https://www.youtube.com/watch?v=Rn3UUnXFPlI&list=PLupD_xFct8mGBRLqGfR75OYmf5s2VyUFo
+
+Using web-APIs in Python for ML.-20200408T112808Z-001.zip file
+
+*************************
+4)LIVE: Big-Data & Cloud Storage for ML/AI Applications | Applied AI Course
+*************************
+Databases, RDBMS, NO SQL Etc
+https://www.youtube.com/watch?v=WUTEK2tqlO4&list=PLupD_xFct8mGBRLqGfR75OYmf5s2VyUFo&index=2
+Big Data and Cloud Storage for ML&AI_NOSQL_SQL.pdf
+
+*************************
+5)LIVE: Applied AI Course:Productionization and deployment of Machine Learning Models|Applied AICourse
+*************************
+
+https://www.youtube.com/watch?v=wF_sB_OnCfk&list=PLupD_xFct8mGBRLqGfR75OYmf5s2VyUFo&index=11&t=0s
+
+*************************
+6)See the play list it has lot of vidoes on IOT, etc
+*************************
+
+https://www.youtube.com/watch?v=Rn3UUnXFPlI&list=PLupD_xFct8mGBRLqGfR75OYmf5s2VyUFo

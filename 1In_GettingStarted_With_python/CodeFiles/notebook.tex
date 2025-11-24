@@ -1,0 +1,1291 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Python-Getting Started -2-Arun}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Python-Getting Started}\label{python-getting-started}
+
+    Slide 9: Assigning single value to a variable\ldots{}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{10}
+        \PY{n}{name} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Victor}\PY{l+s+s1}{\PYZsq{}}
+        \PY{n}{salary} \PY{o}{=} \PY{l+m+mf}{2000.23}
+        \PY{n+nb}{print} \PY{p}{(}\PY{n}{a}\PY{p}{)}
+        \PY{n+nb}{print} \PY{p}{(}\PY{n}{name}\PY{p}{)}
+        \PY{n+nb}{print} \PY{p}{(}\PY{n}{salary}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+10
+Victor
+2000.23
+
+    \end{Verbatim}
+
+    Slide 10 : Assigning multiple value to a variable\ldots{}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{a}\PY{o}{=}\PY{n}{b}\PY{o}{=}\PY{n}{c}\PY{o}{=}\PY{l+m+mi}{10}
+        \PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{,}\PY{n}{z}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{30}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+20
+10
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{}will throw an error}
+        \PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{,}\PY{n}{z}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{20}
+\end{Verbatim}
+
+
+    Slide 14:String Literals
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{name1}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{John}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{name2}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{James}\PY{l+s+s1}{\PYZsq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{name1}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{name2}\PY{p}{)}
+        \PY{n}{text1}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hello}\PY{l+s+se}{\PYZbs{}}
+        \PY{l+s+s1}{World}\PY{l+s+s1}{\PYZsq{}}
+        \PY{n}{text1}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{text1}\PY{p}{)}
+        \PY{n}{multiline}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}\PYZsq{}\PYZsq{}}\PY{l+s+s1}{st1}
+        \PY{l+s+s1}{...st2}
+        \PY{l+s+s1}{...st3}\PY{l+s+s1}{\PYZsq{}\PYZsq{}\PYZsq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{multiline}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+John
+James
+helloWorld
+st1
+{\ldots}st2
+{\ldots}st3
+
+    \end{Verbatim}
+
+    Slide 17: Special Literals: None Works like a null value, or empty value
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{val1} \PY{o}{=} \PY{l+m+mi}{10}
+        \PY{n}{val2} \PY{o}{=} \PY{k+kc}{None}
+        \PY{n}{val1}\PY{p}{,}\PY{n}{val2}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{val2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+None
+
+    \end{Verbatim}
+
+    \begin{quote}
+\section{Operators}\label{operators}
+\end{quote}
+
+    Slide : 19 Arithmetic Operator +, -, *, /, \%
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{l+m+mi}{1}\PY{o}{+}\PY{l+m+mi}{2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} 3
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} -1
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{l+m+mi}{2}\PY{o}{\PYZpc{}}\PY{k}{1}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} 0
+\end{Verbatim}
+            
+    Slide : 20 Assignment Operator =,+=, -=, *=
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{a}\PY{o}{=}\PY{l+m+mi}{10} 
+        \PY{n}{a}\PY{o}{*}\PY{o}{=}\PY{l+m+mi}{10} \PY{c+c1}{\PYZsh{}a=10*10}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100
+
+    \end{Verbatim}
+
+    Slide 21: Comparison Operator \textless{}, \textgreater{}, \textless{}=,
+\textgreater{}=, !=
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{10}
+        \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{20} 
+        \PY{n}{a} \PY{o}{\PYZgt{}} \PY{n}{b}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{Slide} \PY{l+m+mi}{21}\PY{p}{:} \PY{n}{Comparison} \PY{n}{Operator} \PY{o}{\PYZlt{}}\PY{p}{,} \PY{o}{\PYZgt{}}\PY{p}{,} \PY{o}{\PYZlt{}}\PY{o}{=}\PY{p}{,} \PY{o}{\PYZgt{}}\PY{o}{=}\PY{p}{,} \PY{o}{!=}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{10}
+        \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{20} 
+        \PY{n}{a} \PY{o}{!=} \PY{n}{b}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} True
+\end{Verbatim}
+            
+    Slide 21: More Operators =, +=, -=, *=
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{10}
+         \PY{n}{a}\PY{o}{*}\PY{o}{=}\PY{l+m+mi}{10}\PY{c+c1}{\PYZsh{}a=10*10}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100
+
+    \end{Verbatim}
+
+    Logical Operator: and, or , not
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{a}\PY{o}{=}\PY{l+m+mi}{10}\PY{o}{\PYZlt{}}\PY{l+m+mi}{10} \PY{o+ow}{and} \PY{l+m+mi}{2}\PY{o}{\PYZgt{}}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+False
+
+    \end{Verbatim}
+
+    Bitwise Operator
+\&,\textbar{},\textgreater{}\textgreater{},\textless{}\textless{},\textasciitilde{}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{l+m+mi}{7} \PY{o}{|} \PY{l+m+mi}{5}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} 7
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{l+m+mi}{7} \PY{o}{\PYZam{}} \PY{l+m+mi}{5}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} 5
+\end{Verbatim}
+            
+    Identity Operator is, is not
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{x} \PY{o}{=} \PY{l+m+mi}{10}
+         \PY{n}{x} \PY{o+ow}{is} \PY{l+m+mi}{10}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{x} \PY{o}{=} \PY{l+m+mi}{10}
+         \PY{n}{x} \PY{o+ow}{is} \PY{o+ow}{not} \PY{l+m+mi}{10}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} False
+\end{Verbatim}
+            
+    Membership Operator in, not in
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{pets}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{dog}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cat}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{wolf}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lion}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{pets}
+         \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{wolf}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{n}{pets}
+         \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{me}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{in} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{appointment}\PY{l+s+s1}{\PYZsq{}}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} True
+\end{Verbatim}
+            
+    \section{Datatypes in Python}\label{datatypes-in-python}
+
+    \begin{quote}
+\section{Number}\label{number}
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{message} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Hello World}\PY{l+s+s2}{\PYZdq{}}
+         \PY{n}{num} \PY{o}{=} \PY{l+m+mi}{1234}
+         \PY{n}{pi} \PY{o}{=} \PY{l+m+mf}{13.6}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{type}\PY{p}{(}\PY{n}{message}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{}return a string}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{type}\PY{p}{(}\PY{n}{num}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{}return an integer}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{type}\PY{p}{(}\PY{n}{pi}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{}return a float}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<class 'str'>
+<class 'int'>
+<class 'float'>
+
+    \end{Verbatim}
+
+    \begin{quote}
+\section{Strings}\label{strings}
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{var1} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Hello\PYZhy{}World!}\PY{l+s+s1}{\PYZsq{}}
+         \PY{n}{var2} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{PythonTutorial}\PY{l+s+s1}{\PYZsq{}}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{var1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PY{c+c1}{\PYZsh{} prints the first character in the string `H`}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{var2}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)} \PY{c+c1}{\PYZsh{} prints the substring \PYZsq{}ytho\PYZsq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+H
+ytho
+
+    \end{Verbatim}
+
+    find()
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{}find() – Returns the position of the string}
+         \PY{n+nb}{str}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Attachment}\PY{l+s+s1}{\PYZsq{}}
+         \PY{n+nb}{str}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Me}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} -1
+\end{Verbatim}
+            
+    replace()
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{}replace() – Replaces one character/string with other}
+         \PY{n+nb}{str}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Replacement}\PY{l+s+s1}{\PYZsq{}}
+         \PY{n+nb}{str}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ed}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{e}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} 'Replacement'
+\end{Verbatim}
+            
+    split()
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{}split() – Creates a split on the basis of a character}
+         \PY{n+nb}{str}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{word1,word2,word3}\PY{l+s+s1}{\PYZsq{}}
+         \PY{n+nb}{str}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} ['word1', 'word2', 'word3']
+\end{Verbatim}
+            
+    \begin{quote}
+\section{Tuples}\label{tuples}
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{myGroup} \PY{o}{=} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    concatenation
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{}Concatenation \PYZhy{} Adds two string/character}
+         \PY{n}{myGroup} \PY{o}{+}\PY{o}{=} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{myGroup}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+('a', 'b', 'c', 'd', 'f')
+
+    \end{Verbatim}
+
+    repetation
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{}Repetition \PYZhy{}  Duplicate string/character by given number of times}
+         \PY{n}{myGroup} \PY{o}{*} \PY{l+m+mi}{2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:} ('a', 'b', 'c', 'd', 'f', 'a', 'b', 'c', 'd', 'f')
+\end{Verbatim}
+            
+    indexing
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{}Indexing \PYZhy{} Shows the indexed character/string}
+         \PY{n}{myGroup} \PY{o}{=} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{myGroup}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:} 'c'
+\end{Verbatim}
+            
+    slicing
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{}Slicing – Shows a specific set of indexed character/string}
+         \PY{n}{myGroup} \PY{o}{=} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{myGroup}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{4}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}24}]:} ('b', 'c', 'd')
+\end{Verbatim}
+            
+    \begin{quote}
+\section{List}\label{list}
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{myGroup} \PY{o}{=} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mf}{7.12}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    concatenation
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{c+c1}{\PYZsh{}Concatenation – Add elements to the list}
+         \PY{n}{myList} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{3.14}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{python}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{myList}\PY{o}{+}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{p}{]}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{myList}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['a', 1, 3.14, 'python', 'd']
+
+    \end{Verbatim}
+
+    repetation
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{c+c1}{\PYZsh{}Repetition}
+         \PY{n}{myList} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{3.14}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{python}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{myList}\PY{o}{*}\PY{l+m+mi}{2}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}27}]:} ['a', 1, 3.14, 'python', 'a', 1, 3.14, 'python']
+\end{Verbatim}
+            
+    slicing
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{c+c1}{\PYZsh{}Slicing}
+         \PY{n}{myList} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{3.14}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{python}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{myList} \PY{o}{=} \PY{n}{myList}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]}
+         \PY{n}{myList}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:} [1, 3.14]
+\end{Verbatim}
+            
+    append
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{}append(value)}
+         \PY{n}{myList} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{3.14}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{python}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{myList}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{myList}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}29}]:} ['a', 1, 3.14, 'python', 'd']
+\end{Verbatim}
+            
+    extend
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{c+c1}{\PYZsh{}extend(list)}
+         \PY{n}{myList} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{3.14}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{python}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{myList}\PY{o}{.}\PY{n}{extend} \PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{c}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)} 
+         \PY{n}{myList}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}30}]:} ['a', 1, 3.14, 'python', 'c', 'd']
+\end{Verbatim}
+            
+    insert
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{c+c1}{\PYZsh{}insert(index, value)}
+         \PY{n}{myList} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{a}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mf}{3.14}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{python}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{myList}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{myList}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}31}]:} ['a', 1, 'd', 3.14, 'python']
+\end{Verbatim}
+            
+    \begin{quote}
+\section{Dictionary}\label{dictionary}
+\end{quote}
+
+    Example
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{myDict} \PY{o}{=} \PY{p}{\PYZob{}} \PY{l+m+mi}{1}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{John}\PY{l+s+s1}{\PYZsq{}} \PY{p}{,} \PY{l+m+mi}{2}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Bob}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Alice}\PY{l+s+s1}{\PYZsq{}} \PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    Empty dictionary
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{c+c1}{\PYZsh{}empty dictionary }
+         \PY{n}{myDict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    Integer keys
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:} \PY{c+c1}{\PYZsh{}dictionary with integer keys}
+         \PY{n}{myDict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{apple}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ball}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{c+c1}{\PYZsh{}dictionary with mixed keys}
+         \PY{n}{myDict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{John}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{:} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    mixed keys
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}50}]:} \PY{c+c1}{\PYZsh{}dictionary with mixed keys}
+         \PY{n}{myDict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{John}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{:} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}51}]:} \PY{c+c1}{\PYZsh{}paring}
+         \PY{c+c1}{\PYZsh{}from sequence having each item as a pair}
+         \PY{n}{myDict} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{apple}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ball}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}62}]:} \PY{c+c1}{\PYZsh{}accessing dictionary}
+         \PY{n}{myDict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{word1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{word2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+         \PY{n}{myDict}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}62}]:} 'word1'
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}63}]:} \PY{c+c1}{\PYZsh{}len()}
+         \PY{n}{myDict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{word1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{word2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+         \PY{n+nb}{len}\PY{p}{(}\PY{n}{myDict}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}63}]:} 2
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}69}]:} \PY{c+c1}{\PYZsh{}key()}
+         \PY{n}{myDict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{apple}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{:}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ball}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+         \PY{n+nb}{len}\PY{p}{(}\PY{n}{myDict}\PY{p}{)}
+         \PY{n}{myDict}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}69}]:} dict\_keys([1, 2])
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}70}]:} \PY{c+c1}{\PYZsh{}values()}
+         \PY{n}{myDict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{apple}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ball}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}
+         \PY{n}{myDict}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}
+         \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{apple}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ball}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}70}]:} ['apple', 'ball']
+\end{Verbatim}
+            
+    \begin{quote}
+\section{Sets}\label{sets}
+\end{quote}
+
+    \section{Example}\label{example}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}71}]:} \PY{n}{mySet} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}72}]:} \PY{c+c1}{\PYZsh{}Creating set}
+         \PY{n}{mySet} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{\PYZcb{}}
+         \PY{n+nb}{print} \PY{p}{(}\PY{n}{mySet}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{1, 2, 3\}
+
+    \end{Verbatim}
+
+    \section{File Handling}\label{file-handling}
+
+    \section{Open - Do not run}\label{open---do-not-run}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}76}]:} \PY{c+c1}{\PYZsh{}Syntax\PYZhy{}not in Jupyther}
+         \PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{path of file}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        FileNotFoundError                         Traceback (most recent call last)
+
+        <ipython-input-76-9b6051326be5> in <module>()
+          1 \#Syntax
+    ----> 2 f = open("path of file")
+    
+
+        FileNotFoundError: [Errno 2] No such file or directory: 'path of file'
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}77}]:} \PY{c+c1}{\PYZsh{}Example\PYZhy{}not in Jupyther}
+         \PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{path of file}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        FileNotFoundError                         Traceback (most recent call last)
+
+        <ipython-input-77-8a4c54f9fdc5> in <module>()
+          1 \#Example
+    ----> 2 f = open("path of file","rt")
+    
+
+        FileNotFoundError: [Errno 2] No such file or directory: 'path of file'
+
+    \end{Verbatim}
+
+    \section{Read}\label{read}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}78}]:} \PY{c+c1}{\PYZsh{}Example}
+         \PY{c+c1}{\PYZsh{}f = open(\PYZdq{}demofile.txt\PYZdq{}, \PYZdq{}r\PYZdq{})}
+         \PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Cars.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+HP,MPG,VOL,SP,WT
+49,53.70068138,89,104.1853528,28.7620589
+55,50.01340115,92,105.4612635,30.46683298
+55,50.01340115,92,105.4612635,30.19359657
+70,45.69632238,92,113.4612635,30.63211391
+53,50.50423183,92,104.4612635,29.88914864
+70,45.69632238,89,113.1853528,29.59176832
+55,50.01340115,92,105.4612635,30.30847957
+62,46.71655428,50,102.5985128,15.84775807
+62,46.71655428,50,102.5985128,16.35948352
+80,42.29907817,94,115.6452041,30.92015417
+73,44.65283424,89,111.1853528,29.36334142
+92,39.3540941,50,117.5985128,15.75353468
+92,39.3540941,99,122.1050553,32.81359241
+73,44.65283424,89,111.1853528,29.3784363
+66,45.73489292,89,108.1853528,29.34727902
+73,44.65283424,89,111.1853528,29.60452658
+78,42.78990885,91,114.3692933,29.5357836
+92,39.3540941,50,117.5985128,16.19412154
+78,42.78990885,91,114.3692933,29.92939368
+90,38.90183397,103,118.4729364,33.51697417
+92,38.4110033,99,119.1050553,32.32464971
+74,42.8284794,107,110.8408174,34.90821127
+95,38.31060597,101,120.2889958,32.6758277
+81,40.47472334,96,113.8291446,31.83712236
+95,38.31060597,89,119.1853528,28.78172789
+92,38.4110033,50,114.5985128,16.04317492
+92,38.4110033,117,120.7605199,38.06282335
+92,38.4110033,99,119.1050553,32.83506939
+52,43.4694339,104,99.56490661,34.4832075
+103,35.40419245,107,121.8408174,35.54935984
+84,39.4312352,114,113.4846092,37.04235003
+84,39.4312352,101,112.2889958,33.23436141
+102,36.28545648,97,119.9211148,31.38004084
+102,36.28545648,113,121.3926389,37.57328965
+81,39.53163253,101,111.2889958,32.701644
+90,37.95874317,98,115.0130851,31.9112234
+90,37.95874317,88,114.0933825,28.75400008
+102,34.07066829,86,116.909442,27.87991549
+102,34.07066829,86,116.909442,28.63050247
+130,31.01413094,92,128.4612635,30.11543403
+95,35.15272697,113,116.3926389,37.39252442
+95,35.15272697,106,115.7488471,35.02717556
+102,34.07066829,92,117.4612635,30.52742698
+95,35.15272697,88,114.0933825,28.34397592
+93,35.64355765,102,114.3809661,33.07863163
+100,34.56149897,99,117.1050553,32.62191589
+100,34.56149897,111,118.2086984,36.49861738
+98,35.05232964,103,116.4729364,33.91005598
+130,31.01413094,86,127.909442,28.07059654
+115,29.62993595,101,118.2889958,33.45847152
+115,29.62993595,101,118.2889958,33.21395395
+115,29.62993595,101,118.2889958,33.43671117
+115,29.62993595,124,120.4043117,40.39816357
+180,24.48736667,113,143.3926389,37.62069475
+160,26.85227868,113,135.3926389,37.25439197
+130,27.85625194,124,126.4043117,40.58906845
+96,31.11358394,92,110.4612635,30.14754329
+115,29.62993595,101,118.2889958,32.73451818
+100,30.13192258,94,112.6452041,30.61528334
+100,28.8602252,115,115.5765794,37.66287367
+145,27.35426531,111,130.2086984,36.88815313
+120,24.60913156,116,117.6685497,37.86041143
+140,23.51591693,131,126.0481035,43.3909885
+140,23.51591693,123,125.3123415,40.72283115
+150,23.60515831,121,128.128401,40.15948186
+165,40.05,50,126.5985128,15.71285853
+165,23.10317168,114,132.4846092,37.97995604
+165,23.10317168,127,133.6802225,41.57397476
+165,23.10317168,123,133.3123415,40.47204238
+245,21.27370792,112,158.3006687,37.14173328
+280,19.67850666,50,164.5985128,15.82306042
+162,23.203569,135,133.4159845,44.01313857
+162,23.203569,132,133.1400738,43.35312292
+140,19.08634055,160,124.7152409,52.99775236
+140,19.08634055,129,121.864163,42.61869847
+175,18.76283667,129,132.864163,42.77821864
+322,36.9,50,169.5985128,16.13294744
+238,19.1978876,115,150.5765794,37.92311321
+263,34,50,151.5985128,15.76962542
+295,19.83373318,119,167.9444604,39.42309899
+236,12.10126289,107,139.8408174,34.94861469
+
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}79}]:} \PY{c+c1}{\PYZsh{}Reading parts of file}
+         \PY{c+c1}{\PYZsh{}f = open(\PYZdq{}demofile.txt\PYZdq{}, \PYZdq{}r\PYZdq{})}
+         \PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Cars.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{}Return the 5 first characters of the file}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+HP,MP
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}80}]:} \PY{c+c1}{\PYZsh{}Reading first line}
+         \PY{c+c1}{\PYZsh{}f = open(\PYZdq{}demofile.txt\PYZdq{}, \PYZdq{}r\PYZdq{})}
+         \PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Cars.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{o}{.}\PY{n}{readline}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{}readline() is used to return one line}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+HP,MPG,VOL,SP,WT
+
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}81}]:} \PY{c+c1}{\PYZsh{}Reading first line}
+         \PY{c+c1}{\PYZsh{}f = open(\PYZdq{}demofile.txt\PYZdq{}, \PYZdq{}r\PYZdq{})}
+         \PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Cars.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{o}{.}\PY{n}{readline}\PY{p}{(}\PY{p}{)}\PY{p}{)} 
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{o}{.}\PY{n}{readline}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{} using readline() twice prints first two line}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+HP,MPG,VOL,SP,WT
+
+49,53.70068138,89,104.1853528,28.7620589
+
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}82}]:} \PY{c+c1}{\PYZsh{}Loop through the file}
+         \PY{c+c1}{\PYZsh{}Read the file line by line}
+         \PY{c+c1}{\PYZsh{}f = open(\PYZdq{}demofile.txt\PYZdq{}, \PYZdq{}r\PYZdq{})}
+         \PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Cars.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{f}\PY{p}{:}
+           \PY{n+nb}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+HP,MPG,VOL,SP,WT
+
+49,53.70068138,89,104.1853528,28.7620589
+
+55,50.01340115,92,105.4612635,30.46683298
+
+55,50.01340115,92,105.4612635,30.19359657
+
+70,45.69632238,92,113.4612635,30.63211391
+
+53,50.50423183,92,104.4612635,29.88914864
+
+70,45.69632238,89,113.1853528,29.59176832
+
+55,50.01340115,92,105.4612635,30.30847957
+
+62,46.71655428,50,102.5985128,15.84775807
+
+62,46.71655428,50,102.5985128,16.35948352
+
+80,42.29907817,94,115.6452041,30.92015417
+
+73,44.65283424,89,111.1853528,29.36334142
+
+92,39.3540941,50,117.5985128,15.75353468
+
+92,39.3540941,99,122.1050553,32.81359241
+
+73,44.65283424,89,111.1853528,29.3784363
+
+66,45.73489292,89,108.1853528,29.34727902
+
+73,44.65283424,89,111.1853528,29.60452658
+
+78,42.78990885,91,114.3692933,29.5357836
+
+92,39.3540941,50,117.5985128,16.19412154
+
+78,42.78990885,91,114.3692933,29.92939368
+
+90,38.90183397,103,118.4729364,33.51697417
+
+92,38.4110033,99,119.1050553,32.32464971
+
+74,42.8284794,107,110.8408174,34.90821127
+
+95,38.31060597,101,120.2889958,32.6758277
+
+81,40.47472334,96,113.8291446,31.83712236
+
+95,38.31060597,89,119.1853528,28.78172789
+
+92,38.4110033,50,114.5985128,16.04317492
+
+92,38.4110033,117,120.7605199,38.06282335
+
+92,38.4110033,99,119.1050553,32.83506939
+
+52,43.4694339,104,99.56490661,34.4832075
+
+103,35.40419245,107,121.8408174,35.54935984
+
+84,39.4312352,114,113.4846092,37.04235003
+
+84,39.4312352,101,112.2889958,33.23436141
+
+102,36.28545648,97,119.9211148,31.38004084
+
+102,36.28545648,113,121.3926389,37.57328965
+
+81,39.53163253,101,111.2889958,32.701644
+
+90,37.95874317,98,115.0130851,31.9112234
+
+90,37.95874317,88,114.0933825,28.75400008
+
+102,34.07066829,86,116.909442,27.87991549
+
+102,34.07066829,86,116.909442,28.63050247
+
+130,31.01413094,92,128.4612635,30.11543403
+
+95,35.15272697,113,116.3926389,37.39252442
+
+95,35.15272697,106,115.7488471,35.02717556
+
+102,34.07066829,92,117.4612635,30.52742698
+
+95,35.15272697,88,114.0933825,28.34397592
+
+93,35.64355765,102,114.3809661,33.07863163
+
+100,34.56149897,99,117.1050553,32.62191589
+
+100,34.56149897,111,118.2086984,36.49861738
+
+98,35.05232964,103,116.4729364,33.91005598
+
+130,31.01413094,86,127.909442,28.07059654
+
+115,29.62993595,101,118.2889958,33.45847152
+
+115,29.62993595,101,118.2889958,33.21395395
+
+115,29.62993595,101,118.2889958,33.43671117
+
+115,29.62993595,124,120.4043117,40.39816357
+
+180,24.48736667,113,143.3926389,37.62069475
+
+160,26.85227868,113,135.3926389,37.25439197
+
+130,27.85625194,124,126.4043117,40.58906845
+
+96,31.11358394,92,110.4612635,30.14754329
+
+115,29.62993595,101,118.2889958,32.73451818
+
+100,30.13192258,94,112.6452041,30.61528334
+
+100,28.8602252,115,115.5765794,37.66287367
+
+145,27.35426531,111,130.2086984,36.88815313
+
+120,24.60913156,116,117.6685497,37.86041143
+
+140,23.51591693,131,126.0481035,43.3909885
+
+140,23.51591693,123,125.3123415,40.72283115
+
+150,23.60515831,121,128.128401,40.15948186
+
+165,40.05,50,126.5985128,15.71285853
+
+165,23.10317168,114,132.4846092,37.97995604
+
+165,23.10317168,127,133.6802225,41.57397476
+
+165,23.10317168,123,133.3123415,40.47204238
+
+245,21.27370792,112,158.3006687,37.14173328
+
+280,19.67850666,50,164.5985128,15.82306042
+
+162,23.203569,135,133.4159845,44.01313857
+
+162,23.203569,132,133.1400738,43.35312292
+
+140,19.08634055,160,124.7152409,52.99775236
+
+140,19.08634055,129,121.864163,42.61869847
+
+175,18.76283667,129,132.864163,42.77821864
+
+322,36.9,50,169.5985128,16.13294744
+
+238,19.1978876,115,150.5765794,37.92311321
+
+263,34,50,151.5985128,15.76962542
+
+295,19.83373318,119,167.9444604,39.42309899
+
+236,12.10126289,107,139.8408174,34.94861469
+
+
+    \end{Verbatim}
+
+    \section{Write/Create}\label{writecreate}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}83}]:} \PY{c+c1}{\PYZsh{}Example: Append}
+         \PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{demofile.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{f}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Now the file has one more line!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}83}]:} 31
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}84}]:} \PY{c+c1}{\PYZsh{}Example: Overwrite}
+         \PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{demofile.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{w}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{f}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Woops! I have deleted the content!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}84}]:} 34
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}85}]:} \PY{c+c1}{\PYZsh{} Create a new file}
+         \PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{myfile.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \section{Delete}\label{delete}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}86}]:} \PY{c+c1}{\PYZsh{} Deleting the file}
+         \PY{k+kn}{import} \PY{n+nn}{os}
+         \PY{n}{os}\PY{o}{.}\PY{n}{remove}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{demofile.txt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

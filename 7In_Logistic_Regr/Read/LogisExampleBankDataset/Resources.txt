@@ -1,0 +1,8 @@
+https://towardsdatascience.com/building-a-logistic-regression-in-python-step-by-step-becd4d56c9c8#:~:text=Logistic%20Regression%20is%20a%20Machine,of%20a%20categorical%20dependent%20variable.&text=In%20other%20words%2C%20the%20logistic,as%20a%20function%20of%20X.
+
+put this in word document and print it out
+
+https://learning.oreilly.com/library/view/learning-predictive-analytics/9781783983261/
+
+the book is also downloaded.
+check the code and samples

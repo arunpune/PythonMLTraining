@@ -1,0 +1,4 @@
+https://www.kaggle.com/pavanraj159/telecom-customer-churn-prediction
+PRedict Employeee Churn
+
+https://www.datacamp.com/community/tutorials/predicting-employee-churn-python

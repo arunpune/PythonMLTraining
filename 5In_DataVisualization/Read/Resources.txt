@@ -1,0 +1,11 @@
+Less is beautiful
+https://speakerdeck.com/cherdarchuk/remove-to-improve-the-data-ink-ratio?slide=41
+
+
+"Data looks better naked"
+
+Edward Tufte introduced the concept of data-ink in his 1983 classic "The Visual Display of Quantitative Information". In it he states "Data-ink is the non-erasable core of the graphic, the non-redundant ink arranged in response to variation in the numbers represented". Tufte asserts that in displaying data we should remove all non-data-ink and redundant data-ink, within reason, to increase the data-ink-ratio and create a sound graphical design. 
+
+The next time you are trying to improve a chart, consider what you can take away rather than what you can add.
+
+“Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away” – Antoine de Saint-Exupery

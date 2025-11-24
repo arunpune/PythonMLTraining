@@ -1,0 +1,3 @@
+https://www.kaggle.com/arunmohan003/pruning-decision-trees/notebook
+this explains Heart pruning of data
+https://www.youtube.com/watch?v=q90UDEgYqeI&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF&index=64&frags=wn

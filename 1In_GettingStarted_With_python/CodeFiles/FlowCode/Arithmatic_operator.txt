@@ -1,0 +1,100 @@
+##Arithmatic_operator
+
+personno = input('Enter your Mobile No: ') 
+Person=raw_input("Enter Your Name")
+print('Hello'+ Person)
+=======================================
+
+Airtmatic Operator Example:-
+
+Assume variable "a" holds 10 and variable "b" holds 20, then
+a = 10 ;b = 20
+
++ Addition :- a + b = 30
+
+- Subtraction:- a – b = -10
+
+* Multiplication :- a * b = 200
+
+/ Division:- b / a = 2
+
+
+* Power:
+		a = 2 ;	b = 3
+		c = a**b 
+		print " Value of c is ", c
+
+Comparison Operator Example:-
+
+a = 21;b = 10;c = 0
+
+if ( a == b ):
+   print "a is equal to b"
+else:
+   print "a is not equal to b"
+
+
+
+if ( a != b ):
+   print "a is not equal to b"
+else:
+   print "a is equal to b"
+
+
+
+if ( a <> b ):
+   print "a is not equal to b"
+else:
+   print "a is equal to b"
+
+
+
+if ( a < b ):
+   print "a is less than b" 
+else:
+   print "a is not less than b"
+
+
+
+if ( a > b ):
+   print "a is greater than b"
+else:
+   print "a is not greater than b"
+
+
+
+a = 5;b = 20;
+
+if ( a <= b ):
+   print "a is either less than or equal to  b"
+else:
+   print "a is neither less than nor equal to  b"
+
+
+if ( b >= a ):
+   print "b is either greater than  or equal to b"
+else:
+   print "b is neither greater than  nor equal to b"
+
+
+	
+Logical Operator:-
+	a = 6;	b = 7;	c = 42
+
+	 a == 6 and b == 7
+
+	 a == 7 and b == 7
+
+	 not a == 7 and b == 7
+
+	 a == 7 or b == 7
+
+	 a == 7 or b == 6
+
+	 not (a == 7 and b == 6)
+
+	 not a == 7 and b == 6
+
+
+
+	

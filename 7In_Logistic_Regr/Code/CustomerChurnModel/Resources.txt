@@ -1,0 +1,16 @@
+Customer Churn
+Project 1:
+https://towardsdatascience.com/hands-on-predict-customer-churn-5c2a42806266
+More about Customer Churn analysis
+https://blog.markgrowth.com/eliminating-churn-is-growth-hacking-2-0-47a380194a06
+
+
+https://blog.markgrowth.com/eliminating-churn-is-growth-hacking-2-0-47a380194a06
+
+
+Project 2:
+https://academy.vertabelo.com/blog/python-customer-churn-prediction/
+
+
+Project 3:
+https://campus.datacamp.com/courses/predicting-customer-churn-in-python/exploratory-data-analysis-2608ba01-fddc-49f9-ad44-ec84fd34327b?ex=1#

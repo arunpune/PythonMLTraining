@@ -1,0 +1,42 @@
+Good examples
+https://www.ritchieng.com/machine-learning-evaluate-linear-regression-model/
+****************Linear Regression****************
+
+Regular_LinearRegression_11March2020 add the slides from here to 
+MachineLearningUseCases_LinearRegression_11March2020
+
+
+****************Linear Regression Resources****************
+Salary Example for Linear Regression
+https://towardsdatascience.com/linear-regression-simplified-ordinary-least-square-vs-gradient-descent-48145de2cf76
+
+https://medium.com/@erika.dauria/looking-at-r-squared-721252709098
+It is interesting to note that the R-Squared formula does not make use of any independent variables.
+
+https://www.machinelearningplus.com/machine-learning/complete-introduction-linear-regression-r/
+
+
+****************Important Reading Below****************
+Bajaj Finserv Training Plan.
+Keep all the ppt and slides ready.
+Take the print outs
+Correct the Slides for Linear Regression
+Create the slides for Logistic Regression
+View the slides given below.
+
+1)Bajaj Customer Segmentation:
+Take the print out and be prepared
+C:\Users\HP\Downloads\Intelli\IntelliDataSciencePython\PythonDataScience\1PythonTrainingToUSe\DoIt\mall_customer_segmentation-master
+
+2)
+MachineLearningFor Customer ANalytics
+https://towardsdatascience.com/machine-learning-for-customer-analytics-1-478eeab7345f
+
+3) Customer Segmentation using Python
+https://www.datacamp.com/courses/customer-segmentation-in-python
+
+Decision Tree Classification
+https://medium.com/swlh/decision-tree-classifier-from-scratch-8f49b48d35b1
+
+DataOPs
+https://medium.com/swlh/a-practical-guide-to-get-started-with-dataops-c0061656b83b

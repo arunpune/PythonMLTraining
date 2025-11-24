@@ -1,0 +1,12 @@
+https://medium.com/@cdabakoglu/heart-disease-logistic-regression-machine-learning-d0ebf08e55c0
+
+Good Examplesf:
+
+https://towardsdatascience.com/building-a-logistic-regression-in-python-step-by-step-becd4d56c9c8
+
+
+Titanic Examples
+https://medium.com/@anishsingh20/logistic-regression-in-python-423c8d32838b
+
+precision:
+https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9

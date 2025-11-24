@@ -1,0 +1,17 @@
+chi-squared test is used to determine whether there is a significant difference between the expected frequencies and the observed frequencies in one or more categories
+
+Basic Decision Tree using Weather Data
+
+Let us use GINI INDEX:
+https://medium.com/@randerson112358/python-decision-tree-classifier-example-d73bc3aeca6
+
+
+1)
+https://medium.com/datadriveninvestor/decision-tree-algorithm-with-hands-on-example-e6c2afb40d38
+
+2)
+https://www.saedsayad.com/decision_tree.htm
+
+This the example of the decision tree used in the slide , it uses GINI
+
+3)

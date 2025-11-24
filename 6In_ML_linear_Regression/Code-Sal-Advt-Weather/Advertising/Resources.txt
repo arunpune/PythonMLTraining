@@ -1,0 +1,8 @@
+The objective is to use linear regression to understand how advertisement spending impacts sales.
+https://towardsdatascience.com/the-complete-guide-to-linear-regression-in-python-3d3f8f06bf8
+https://github.com/marcopeix/datasciencewithmarco
+https://www.youtube.com/watch?v=QQ6faGxQ9hM
+
+
+detailed project:
+https://www.youtube.com/watch?v=YnGf8G2JJyg
